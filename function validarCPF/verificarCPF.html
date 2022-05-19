@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Verificador CPF</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function verificadorCPF(){
+            let cpf =  document.getElementById("cpf").value;
+            var cpfInteiro = new Array(11);
+            var indice=0;
+            var tamanhoCPF = 11;
+            var primeiroDigitoVerificador=0;
+            var vetorPrimeiroDigitoVerificador = new Array(10,9,8,7,6,5,4,3,2);
+            var vetorSegundoDigitoVerificador = new Array(11,10,9,8,7,6,5,4,3,2);
+            var segundoDigitoVerificador=0;
+            if(cpf.length!=tamanhoCPF){
+               return "erroTamanhoCPF";
+            }
+            if (cpf == "00000000000" || 
+                cpf == "11111111111" || 
+                cpf == "22222222222" || 
+                cpf == "33333333333" || 
+                cpf == "44444444444" || 
+                cpf == "55555555555" || 
+                cpf == "66666666666" || 
+                cpf == "77777777777" || 
+                cpf == "88888888888" || 
+                cpf == "99999999999"){
+                    alert("CNPJ Inválido");
+                    return false;
+            }
+            for(indice=0; indice<tamanhoCPF; indice++){
+               if(!isNaN(cpf[indice])){
+                    cpfInteiro[indice]=parseInt(cpf[indice]);
+               }
+               else{
+                    return "CaractereInvalido"
+               }
+            }
+            for(indice=0; indice<tamanhoCPF-2; indice++){
+               primeiroDigitoVerificador+=cpfInteiro[indice]*vetorPrimeiroDigitoVerificador[indice];
+            }
+            primeiroDigitoVerificador=primeiroDigitoVerificador%11;
+            if(primeiroDigitoVerificador<2){
+                primeiroDigitoVerificador=0;
+            }
+            else{
+                primeiroDigitoVerificador=tamanhoCPF-primeiroDigitoVerificador;
+            }
+            if(cpfInteiro[9]!=primeiroDigitoVerificador){
+                return "primeiroDigitoVerificadorErrado";
+            }
+            for(indice=0; indice<tamanhoCPF-1; indice++){
+                segundoDigitoVerificador+=cpfInteiro[indice]*vetorSegundoDigitoVerificador[indice];
+            }
+            segundoDigitoVerificador=segundoDigitoVerificador%11
+            if(segundoDigitoVerificador<2){
+                segundoDigitoVerificador=0;
+            }
+            else{
+                segundoDigitoVerificador=tamanhoCPF-segundoDigitoVerificador;
+            }
+            if(cpfInteiro[10]!=segundoDigitoVerificador){
+                return "segundoDigitoVerificadorErrado";
+            }
+            return 0;
+            }
+    </script>
+    <form name="validadorCPF">
+        <div align ="center">
+            <h1>Verificador CPF</h1>
+            <p>CPF: <input type="text" name="cpf" id="cpf" class="cpf" placeholder="CPF:" /></p>
+            <p>Código E-mail: <input type="text" name="cpf" id="cpf" class="cpf" placeholder="Código E-mail:" /></p>
+            <p>Código SMS: <input type="text" name="cpf" id="cpf" class="cpf" placeholder="Código SMS" /></p>
+            <p><input type="checkbox" id="politicaDePrivacidade" name="politicaDePrivacidade" value="phplang">
+            <label for="php">Eu aceito a Política de Privacidade</label></p>
+            <p><input type="checkbox" id="politicaDaCasa" name="politicaDaCasa" value="phplang">
+            <label for="php">Eu aceito a Política da Casa</label></p>
+            <p><label><input type="button" name="verificarCPF" onclick="verificadorCPF()" value="Validar Dados" /></label></p>
+        </div>
+    </form>
+</body>
+</html>
