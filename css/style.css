@@ -1,0 +1,21 @@
+body{
+    text-align: center;
+    background: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    color: gold;
+}
+#validadorCNPJ{
+    margin-bottom: 50px;
+}
+#validadorCPF{
+    margin-bottom: 50px;
+}
+#validadorDataNascimento{
+    margin-bottom: 100px;
+}

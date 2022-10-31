@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Verificador CNPJ</title>
+    <script src="./javascript/verificarCNPJ.js"></script>
+    <script src="./javascript/verificarCPF.js"></script>
+    <script src="./javascript/verificarNascimento.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <h1>Validadores</h1>
+    <div class="validadores">
+        <form id="validadorCNPJ">
+            <label>
+                <p>CNPJ: <input type="text" name="cnpj" id="cnpj" class="cnpj" placeholder="Digite seu CNPJ:" /></p>
+            </label>
+            <input type="button" name="verificarCNPJ" onclick="verificadorCNPJ()" value="Validar" />
+        </form>
+        <form id="validadorCPF">
+            <label>
+                <p>CPF: <input type="text" name="cpf" id="cpf" class="cpf" placeholder="Digite seu CPF:" /></p>
+            </label>
+            <input type="button" name="verificarCPF" onclick="verificadorCPF()" value="Validar" />
+        </form>
+        <form id="validadorDataNascimento">
+            <label>
+                <p>Data de Nascimento: <input type="date" name="dataNascimento" id="dataNascimento"
+                        class="dataNascimento" placeholder="Digite sua data de data de Nascimento:" /></p>
+            </label>
+            <input type="button" name="verificarDataNascimento" onclick="verificadorNascimento()" value="Validar" />
+        </form>
+    </div>
+</body>
+
+</html>
