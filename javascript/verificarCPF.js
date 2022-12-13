@@ -8,6 +8,7 @@ function verificadorCPF() {
     var vetorPrimeiroDigitoVerificador = new Array(10, 9, 8, 7, 6, 5, 4, 3, 2);
     var vetorSegundoDigitoVerificador = new Array(11, 10, 9, 8, 7, 6, 5, 4, 3, 2);
     var segundoDigitoVerificador = 0;
+    cpf.replace('d{3}[.-]?\d{3}[.-]?\d{3}[.-]?\d{2}', '')
     if (cpf.length != tamanhoCPF) {
         console.log("Um CPF é composto de 11 números")
         return false;
